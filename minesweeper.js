@@ -1,6 +1,6 @@
 // Logic
 
-const TILES_STATUS = {
+export const TILES_STATUS = {
   HIDDEN: 'hidden',
   MINE: 'mine',
   NUMBER: 'number',
