@@ -22,6 +22,7 @@ export function createBoard(boardSize, numberOfMines) {
         x,
         y,
         mine: minePositions.some(positionMatch.bind(null, { x, y })),
+
         get status() {
           return this.element.dataset.status;
         },
@@ -36,6 +37,21 @@ export function createBoard(boardSize, numberOfMines) {
   }
 
   return board;
+}
+
+export function markTile(tile) {
+  if (
+    tile.status !== TILES_STATUS.HIDDEN &&
+    tile.status !== TILES_STATUS.MARKED
+  ) {
+    return;
+  }
+
+  if (tile.status === TILES_STATUS.MARKED) {
+    tile.status = TILES_STATUS.HIDDEN;
+  } else {
+    tile.status = TILES_STATUS.MARKED;
+  }
 }
 
 function getMinesPosition(boardSize, numberOfMines) {
