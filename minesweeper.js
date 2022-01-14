@@ -67,9 +67,30 @@ export function revealTile(board, tile) {
   const adjacentTiles = nearbyTiles(board, tile);
   const mines = adjacentTiles.filter((t) => t.mine);
   if (mines.length === 0) {
+    adjacentTiles.forEach(revealTile.bind(null, board));
   } else {
     tile.element.textContent = mines.length;
   }
+}
+
+export function checkWin(board) {
+  return board.every((row) => {
+    return row.every((tile) => {
+      return (
+        tile.status === TILES_STATUS.NUMBER ||
+        (tile.mine &&
+          (tile.status === TILES_STATUS.MARKED || TILES_STATUS.HIDDEN))
+      );
+    });
+  });
+}
+
+export function checkLose(board) {
+  return board.some((row) => {
+    return row.some((tile) => {
+      return tile.status === TILES_STATUS.MINE;
+    });
+  });
 }
 
 function getMinesPosition(boardSize, numberOfMines) {
