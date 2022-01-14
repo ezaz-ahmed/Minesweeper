@@ -4,31 +4,32 @@
 
 body {
   margin: 0;
-  background-color: #333;
+  background-image: linear-gradient(#00cc99, #6600ff);
   display: flex;
   align-items: center;
-  font-size: 3rem;
+  font-size: 1.8rem;
   flex-direction: column;
-  color: white;
+  color: #000000;
 }
 
 .title {
-  margin: 20px;
+  margin: 15px;
 }
 
 .subtext {
-  color: #ccc;
+  color: #fff;
   font-size: 1.5rem;
   margin-bottom: 10px;
+  line-height: 2rem;
 }
 
 .board {
   display: inline-grid;
   padding: 10px;
-  grid-template-columns: repeat(var(--size), 40px);
-  grid-template-rows: repeat(var(--size), 40px);
+  grid-template-columns: repeat(var(--size), 50px);
+  grid-template-rows: repeat(var(--size), 50px);
   gap: 4px;
-  background-color: #777;
+  background-color: #8f5e5e;
 }
 
 .board > * {
@@ -48,7 +49,7 @@ body {
 }
 
 .board > [data-status='mine'] {
-  background-color: red;
+  background-color: #f81f1f;
 }
 
 .board > [data-status='number'] {
@@ -56,5 +57,5 @@ body {
 }
 
 .board > [data-status='marked'] {
-  background-color: yellow;
+  background-color: #d3d311;
 }

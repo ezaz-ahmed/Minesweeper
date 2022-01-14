@@ -48,8 +48,11 @@ export function markTile(tile) {
 
   if (tile.status === TILES_STATUS.MARKED) {
     tile.status = TILES_STATUS.HIDDEN;
+    tile.element.textContent = '';
   } else {
     tile.status = TILES_STATUS.MARKED;
+    tile.element.textContent = '🚩';
+    // tile.element.style.fontSize = '24px';
   }
 }
 
@@ -59,6 +62,8 @@ export function revealTile(board, tile) {
   }
 
   if (tile.mine) {
+    tile.element.textContent = '💣';
+    // tile.element.style.fontSize = '24px';
     tile.status = TILES_STATUS.MINE;
     return;
   }
